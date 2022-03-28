@@ -1,0 +1,5 @@
+rootProject.name = 'SpringBoot-Grpc'
+include 'SpringBoot-Grpc-Lib'
+include 'SpringBoot-Grpc-Server'
+include 'SpringBoot-Grpc-Client'
+

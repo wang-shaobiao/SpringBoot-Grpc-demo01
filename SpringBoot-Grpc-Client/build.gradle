@@ -1,0 +1,5 @@
+
+dependencies {
+    implementation (project(path: ':SpringBoot-Grpc-Lib'))
+
+}

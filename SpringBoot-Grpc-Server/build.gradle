@@ -1,0 +1,7 @@
+
+dependencies {
+    //如果要使用Spring-Grpc-Lib中的引用的包，得使用api，implementation是不行的，
+    //如A依赖B，B依赖C
+    implementation (project( ':SpringBoot-Grpc-Lib'))
+
+}
