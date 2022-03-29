@@ -1,6 +1,7 @@
 plugins {
     id "com.google.protobuf" version "0.8.18"
 }
+
 sourceSets {
     main {
         proto {
@@ -22,15 +23,21 @@ dependencies {
     //如果要使用Spring-Grpc-Lib中的引用的包，得使用api，implementation是不行的，
     //如A依赖B，B依赖C,A要依赖C就需要B使用api
     //使用api的话需要插件 apply plugin : 'java-library' 替换掉'java'
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.4'
-    api 'io.grpc:grpc-all:1.45.0'
-    implementation 'com.alibaba:fastjson:1.2.79'
+//    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.4'
+//    api 'io.grpc:grpc-all:1.45.0'
+//    implementation 'com.alibaba:fastjson:1.2.79'
     //testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
     //testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+    implementation "io.grpc:grpc-protobuf:1.45.0"
+    implementation "io.grpc:grpc-stub:1.45.0"
 }
 protobuf {
     protoc {
         artifact = 'com.google.protobuf:protoc:3.5.1'
+    }
+    generatedFilesBaseDir = "$projectDir/src/generated"
+    clean {
+        delete generatedFilesBaseDir
     }
     plugins {
         grpc {
@@ -39,15 +46,18 @@ protobuf {
     }
     generatedFilesBaseDir = "$projectDir/src"
     generateProtoTasks {
-        all()*.builtins { java{ outputSubDir = "java" } }
+//        all()*.builtins { java{ outputSubDir = "java" } }
         all()*.plugins {
-            grpc {
-                outputSubDir = "java"
-            }
+            grpc {}
         }
     }
 }
 
-test {
-    useJUnitPlatform()
-}
+//idea {
+//    module {
+//        sourceDirs += file("src/generated/main/java")
+//        sourceDirs += file("src/generated/main/grpc")
+//        generatedSourceDirs += file("src/generated/main/java")
+//        generatedSourceDirs += file("src/generated/main/grpc")
+//    }
+//}

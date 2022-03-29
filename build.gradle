@@ -1,10 +1,11 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.6.5' apply false
+    //貌似这上下两者有一即可
     id 'io.spring.dependency-management' version "1.0.11.RELEASE" apply false
 }
 allprojects {
-    group = 'com.wsb.learning.springboot-grpc'
+    group = 'com.wsb.springboot-grpc'
     version = '1.0.0-SNAPSHOT'
     apply plugin: 'idea'
 }
@@ -12,8 +13,8 @@ allprojects {
 
 subprojects {
     apply plugin : 'java-library'
-    apply plugin : 'org.springframework.boot'
-    apply plugin : 'io.spring.dependency-management'
+    //apply plugin : 'org.springframework.boot'
+    //apply plugin : 'io.spring.dependency-management'
 
     ext {
         springBootVersion = "2.6.5"
@@ -31,21 +32,21 @@ subprojects {
         }
         mavenLocal()
     }
-    dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    }
-
-    tasks.named('test') {
-        useJUnitPlatform()
-    }
-    configurations {
-        all*.exclude module: 'spring-boot-starter-logging'
-        all*.exclude module: 'logback-classic'
-        all*.exclude module: 'log4j-over-slf4j'
-    }
+//    dependencies {
+//        implementation 'org.springframework.boot:spring-boot-starter-web'
+//        implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+//
+//        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    }
+//
+//    tasks.named('test') {
+//        useJUnitPlatform()
+//    }
+//    configurations {
+//        all*.exclude module: 'spring-boot-starter-logging'
+//        all*.exclude module: 'logback-classic'
+//        all*.exclude module: 'log4j-over-slf4j'
+//    }
 }
 
 

@@ -1,6 +1,20 @@
-
+plugins{
+    id 'org.springframework.boot'
+    //貌似这上下两者有一即可
+    //id 'io.spring.dependency-management' version "1.0.11.RELEASE" apply false
+}
 dependencies {
-    implementation (project(path: ':SpringBoot-Grpc-Lib'))
-    implementation  'com.alibaba:fastjson:1.2.79'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation 'net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE'
+    implementation "org.springframework.boot:spring-boot-starter-log4j2:${springBootVersion}"
+    implementation (project(':SpringBoot-Grpc-Lib'))
+    developmentOnly "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+
+}
+//如果引用了web--换成slf4j+log4j2
+configurations {
+    all*.exclude module: 'spring-boot-starter-logging'
+    all*.exclude module: 'logback-classic'
+    all*.exclude module: 'log4j-over-slf4j'
 }

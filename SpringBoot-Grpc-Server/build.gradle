@@ -1,7 +1,21 @@
+plugins{
+    id 'org.springframework.boot'
+    //貌似这上下两者有一即可
+    id 'io.spring.dependency-management'
+}
 
 dependencies {
-    //如果要使用Spring-Grpc-Lib中的引用的包，得使用api，implementation是不行的，
-    //如A依赖B，B依赖C
-    implementation (project( ':SpringBoot-Grpc-Lib'))
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-log4j2"
+    implementation 'net.devh:grpc-server-spring-boot-starter:2.13.1.RELEASE'
+    implementation (project(':SpringBoot-Grpc-Lib'))
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+}
+//如果引用了web--换成slf4j+log4j2
+configurations {
+        all*.exclude module: 'spring-boot-starter-logging'
+        all*.exclude module: 'logback-classic'
+        all*.exclude module: 'log4j-over-slf4j'
 }
