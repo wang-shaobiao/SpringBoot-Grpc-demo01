@@ -29,7 +29,7 @@ dependencies {
     //使用api的话需要插件 apply plugin : 'java-library' 替换掉'java'
 //
 //    api 'io.grpc:grpc-all:1.45.0'
-//    implementation 'com.alibaba:fastjson:1.2.79'
+    implementation 'com.alibaba:fastjson:1.2.79'
     //testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
     //testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
     implementation "io.grpc:grpc-protobuf:1.45.0"

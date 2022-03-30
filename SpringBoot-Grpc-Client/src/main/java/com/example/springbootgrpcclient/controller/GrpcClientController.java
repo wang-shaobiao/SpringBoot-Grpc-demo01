@@ -3,7 +3,8 @@ package com.example.springbootgrpcclient.controller;
 import com.alibaba.fastjson.JSON;
 import com.dashuai.learning.grpc.lib.proto.UserOuterClass;
 import com.example.springbootgrpcclient.service.UserClientService;
-import com.example.springbootgrpclib.util.ProtobufUtils;
+
+import com.wsb.util.ProtobufUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -8,9 +8,11 @@ server:
 grpc:
   client:
     local-grpc-server:
-      host:
-        - ${LOCAL-GRPC-HOST:127.0.0.1}
-      port:
-        - 9001
+      address: 'static://localhost:9091'
+#      host:
+#        - ${LOCAL-GRPC-HOST:127.0.0.1}
+#      port:
+#        - 9001
       enableKeepAlive: true
       keepAliveWithoutCalls: true
+      negotiationType: plaintext

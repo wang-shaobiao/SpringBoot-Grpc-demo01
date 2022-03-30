@@ -4,6 +4,7 @@ plugins{
     //id 'io.spring.dependency-management' version "1.0.11.RELEASE" apply false
 }
 dependencies {
+    implementation 'com.alibaba:fastjson:1.2.79'
 
     implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     implementation 'net.devh:grpc-client-spring-boot-starter:2.13.1.RELEASE'

@@ -2,13 +2,12 @@ package com.example.service;
 
 import com.dashuai.learning.grpc.lib.proto.UserGrpc;
 import com.dashuai.learning.grpc.lib.proto.UserOuterClass;
-import com.example.springbootgrpclib.util.ProtobufUtils;
 import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import com.wsb.util.ProtobufUtils;
 
 import java.util.HashMap;
 import java.util.Map;
