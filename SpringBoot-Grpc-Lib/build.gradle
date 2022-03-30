@@ -9,7 +9,11 @@ sourceSets {
             srcDir 'src/main/protocolbuffers'
             include '**/*.protodevel'
         }
-        java {}
+        java {
+            srcDir 'src/main/grpc'
+            srcDir 'src/main/java'
+            srcDir 'src/main/Util'
+        }
     }
     test {
         proto {
@@ -23,13 +27,15 @@ dependencies {
     //如果要使用Spring-Grpc-Lib中的引用的包，得使用api，implementation是不行的，
     //如A依赖B，B依赖C,A要依赖C就需要B使用api
     //使用api的话需要插件 apply plugin : 'java-library' 替换掉'java'
-//    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.4'
+//
 //    api 'io.grpc:grpc-all:1.45.0'
 //    implementation 'com.alibaba:fastjson:1.2.79'
     //testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
     //testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
     implementation "io.grpc:grpc-protobuf:1.45.0"
     implementation "io.grpc:grpc-stub:1.45.0"
+//    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.4'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java-util', version: '3.19.4'
 }
 protobuf {
     protoc {

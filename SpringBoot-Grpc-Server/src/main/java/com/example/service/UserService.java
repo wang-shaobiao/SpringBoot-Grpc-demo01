@@ -5,14 +5,15 @@ import com.dashuai.learning.grpc.lib.proto.UserOuterClass;
 import com.example.springbootgrpclib.util.ProtobufUtils;
 import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.server.service.GrpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
-@Service
 
+@GrpcService
 public class UserService extends UserGrpc.UserImplBase {
     private final static Logger log = LoggerFactory.getLogger(UserService.class);
     private Map<Integer, UserOuterClass.UserData> map = new HashMap<>();
