@@ -31,12 +31,13 @@ public class UserService extends UserGrpc.UserImplBase {
     @Override
     public void getUser (UserOuterClass.UserRequest request, StreamObserver<UserOuterClass.UserData> responseObserver) {
         UserOuterClass.UserData ud = map.get(request.getId()) ;
+        log.info("stub找到");
         if (ud == null) {
             String temp = "{\"id\":0,\"name\":\"默认\",\"sex\":\"男\",\"age\":20,\"remark\":\"路人甲\"}";
             try {
                 ud = ProtobufUtils.jsonToPf(temp, UserOuterClass.UserData.newBuilder());
             } catch (InvalidProtocolBufferException e) {
-
+                e.printStackTrace();
             }
 
             map.put(request.getId(),ud);

@@ -6,11 +6,12 @@ plugins{
 
 dependencies {
 
-    implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "org.springframework.boot:spring-boot-starter-log4j2"
+    implementation "org.springframework.boot:spring-boot-starter-web:2.6.5"
+    implementation "org.springframework.boot:spring-boot-starter-log4j2:2.6.5"
     implementation 'net.devh:grpc-server-spring-boot-starter:2.13.1.RELEASE'
     implementation (project(':SpringBoot-Grpc-Lib'))
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.6.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.5'
 
 }
 //如果引用了web--换成slf4j+log4j2
@@ -18,4 +19,7 @@ configurations {
         all*.exclude module: 'spring-boot-starter-logging'
         all*.exclude module: 'logback-classic'
         all*.exclude module: 'log4j-over-slf4j'
+}
+tasks.named('test') {
+        useJUnitPlatform()
 }
